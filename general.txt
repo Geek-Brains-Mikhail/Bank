@@ -1,0 +1,21 @@
+
+
+
+int billDollar = 5; //5 долларова
+int billEuro = 5; // 5 евро
+int biilRubles = 350; // 350 рублей
+int billYuan = 40;// 40 юаней
+int billTenge = 2800;//2800 тенге
+
+
+
+
+int dollarRubles = 60;
+int dollarEuro = 1;
+int dollarYuan = 7;
+int dollarTenge = 480;
+
+
+1)Доллары в рубли
+2)Доллары в евро
+3)
