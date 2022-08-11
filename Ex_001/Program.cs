@@ -169,7 +169,7 @@ if(registrationStatus.ToLower() == "да")
         }
 }
 else{
-    Console.WriteLine("Досвидания, до скорых встреч!)");
+    Console.WriteLine("Досвидания, до скорых встреч.!)");
 }
 
 
