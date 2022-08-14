@@ -1,13 +1,13 @@
 ﻿//************BeginnigDictionaries************//
+
 var rate = new Dictionary<string,double>()
 {
-    ["rub"] = 1   ,
+    ["rub"] = 1,
     ["usd"] = 60,
     ["eur"] = 62,
     ["chf"] = 65,
     ["cny"] = 9
 };
-
 var currenciesAvailable = new Dictionary<string,string>()
 {
     ["rub"] = "Российский рубль",
@@ -47,14 +47,13 @@ void OutputBalance(Dictionary<string,double> dictionar)
         Console.WriteLine($"{balance.Key} = {balance.Value}");
     }
 }
-void ConvertCurrency (Dictionary<string,double> balance, Dictionary<string,double> rate,string login, int password)
+void ConvertCurrency (Dictionary<string,double> balance, Dictionary<string,double> rate,string login, string password)
 {
     Console.WriteLine("Для доступа к конвертированию введите логин и пароль!") ;
     Console.Write("Введите логин: ");
     string checklogin = Console.ReadLine();
     Console.Write("Введите пароль: ");
-    int checkpassword = Convert.ToInt32(Console.ReadLine());
-    
+    string checkpassword = Console.ReadLine();
     if(checklogin == login && checkpassword == password)
     {
         Console.WriteLine("Вход разрешен.");
@@ -70,7 +69,7 @@ void ConvertCurrency (Dictionary<string,double> balance, Dictionary<string,doubl
                 string secondCurrency = Console.ReadLine();
                 Console.Write($"Введите количество {firstCurrency}, которое вы хотите конвертировать в {secondCurrency}: ");
                 double numberConversions = Convert.ToDouble(Console.ReadLine());
-                if(firstCurrency.ToLower() != "rub" && secondCurrency.ToLower() !="rub")
+                if(secondCurrency.ToLower() !="rub")
                 {  
                     if(numberConversions <= balance[firstCurrency])
                     {   
@@ -86,23 +85,7 @@ void ConvertCurrency (Dictionary<string,double> balance, Dictionary<string,doubl
                             Console.WriteLine("Конвертация прошла очень успешно!)");
                         }
                     }   
-                }
-                else if(firstCurrency.ToLower() == "rub")
-                {       
-                    if(numberConversions <= balance[firstCurrency])
-                        {   
-                            double firstCount =  Math.Round(numberConversions/ rate[secondCurrency] ,  2)  ;
-                            double manipulatroOne =  balance[firstCurrency] - numberConversions;
-                            Console.WriteLine($"после конвертации {firstCurrency} в {secondCurrency} на вашем счете будет {balance[secondCurrency] + firstCount} {secondCurrency}  и  {manipulatroOne} {firstCurrency};");
-                            Console.Write("Конвертируем?:('yes' or 'not') : ");
-                            if(Console.ReadLine().ToLower() == "yes")
-                            {
-                                balance[secondCurrency] += firstCount;
-                                balance[firstCurrency] -= numberConversions;
-                                Console.WriteLine("Конвертация прошла очень успешно!)");
-                            }
-                        }  
-                }
+                }                
                 else if(secondCurrency.ToLower() == "rub")
                 {       
                     if(numberConversions <= balance[firstCurrency])
@@ -142,7 +125,7 @@ if(registrationStatus.ToLower() == "yes")
     Console.Write("Введите логин: ");
     string login = Console.ReadLine();
     Console.Write("Введите пароль: ");
-    int password = Convert.ToInt32(Console.ReadLine());
+    string password =Console.ReadLine();
     Console.WriteLine("Регистрация прошла успешно!)Приятного пользования нашим сервисом\n");
     while(isWork)
     {
