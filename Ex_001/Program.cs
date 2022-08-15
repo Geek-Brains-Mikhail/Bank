@@ -69,39 +69,20 @@ void ConvertCurrency (Dictionary<string,double> balance, Dictionary<string,doubl
                 string secondCurrency = Console.ReadLine();
                 Console.Write($"Введите количество {firstCurrency}, которое вы хотите конвертировать в {secondCurrency}: ");
                 double numberConversions = Convert.ToDouble(Console.ReadLine());
-                if(secondCurrency.ToLower() !="rub")
-                {  
-                    if(numberConversions <= balance[firstCurrency])
-                    {   
-                        double firstCount = numberConversions * rate[firstCurrency];  //balance[firstCurrency] * rate[firstCurrency];
-                        double secondCount = Math.Round(firstCount / rate[secondCurrency],2);
-                        double manipulatroOne =  balance[firstCurrency] - numberConversions;
-                        Console.WriteLine($"после конвертации {firstCurrency} в {secondCurrency} на вашем счете будет {balance[secondCurrency] + secondCount} {secondCurrency}  и  {manipulatroOne} {firstCurrency};");
-                        Console.Write("Конвертируем?:('yes' or 'not') : ");
-                        if(Console.ReadLine().ToLower() == "yes")
-                        {
-                            balance[secondCurrency] += secondCount;
-                            balance[firstCurrency] -= numberConversions;
-                            Console.WriteLine("Конвертация прошла очень успешно!)");
-                        }
-                    }   
-                }                
-                else if(secondCurrency.ToLower() == "rub")
-                {       
-                    if(numberConversions <= balance[firstCurrency])
-                        {   
-                            double firstCount =  Math.Round( numberConversions * rate[firstCurrency],2) ;
-                            double manipulatorOne =  balance[firstCurrency] - numberConversions;
-                            Console.WriteLine($"после конвертации {firstCurrency} в {secondCurrency} на вашем счете будет {balance[secondCurrency] + firstCount} {secondCurrency}  и  {manipulatorOne} {firstCurrency};");
-                            Console.Write("Конвертируем?:('yes' or 'not') : ");
-                            if(Console.ReadLine().ToLower() == "yes")
-                            {
-                                balance[secondCurrency] += firstCount;
-                                balance[firstCurrency] -= numberConversions;
-                                Console.WriteLine("Конвертация прошла очень успешно!)");
-                            }
-                        }  
-                } 
+                if(numberConversions <= balance[firstCurrency])
+                {   
+                    double firstCount = numberConversions * rate[firstCurrency];  //balance[firstCurrency] * rate[firstCurrency];
+                    double secondCount = Math.Round(firstCount / rate[secondCurrency],2);
+                    double manipulatroOne = Math.Round(balance[firstCurrency] - numberConversions,2); 
+                    Console.WriteLine($"после конвертации {firstCurrency} в {secondCurrency} на вашем счете будет {balance[secondCurrency] + secondCount} {secondCurrency}  и  {manipulatroOne} {firstCurrency};");
+                    Console.Write("Конвертируем?:('yes' or 'not') : ");
+                    if(Console.ReadLine().ToLower() == "yes")
+                    {
+                        balance[secondCurrency] += secondCount;
+                        balance[firstCurrency] -= numberConversions;
+                        Console.WriteLine("Конвертация прошла очень успешно!)");
+                    }
+                }                                               
             }
             else
             {
